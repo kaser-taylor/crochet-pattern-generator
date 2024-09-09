@@ -7,7 +7,8 @@ s = {
     'waist': 31,
     'hip': 35,
     'wrist': 6.25,
-    'neck': 19
+    'neck': 19,
+    'upper arm circ': 11.5
 }
 
 m = {
@@ -19,7 +20,8 @@ m = {
     'waist': 33,
     'hip': 39,
     'wrist': 6.65,
-    'neck': 21
+    'neck': 21,
+    'upper arm circ': 13
 }
 
 l = {
@@ -31,7 +33,8 @@ l = {
     'waist': 37,
     'hip': 43,
     'wrist': 7.25,
-    'neck': 23
+    'neck': 23,
+    'upper arm circ': 14.5
 }
 
 xl = {
@@ -43,7 +46,8 @@ xl = {
     'waist': 41,
     'hip': 47,
     'wrist': 7.75,
-    'neck': 25
+    'neck': 25,
+    'upper arm circ': 16
 }
 
 xxl = {
@@ -55,7 +59,8 @@ xxl = {
     'waist': 45,
     'hip': 51,
     'wrist': 8.25,
-    'neck': 27
+    'neck': 27,
+    'upper arm circ': 17.5
 }
 
 

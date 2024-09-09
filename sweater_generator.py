@@ -42,23 +42,35 @@ def get_width_height(swatch_size):
     height = dimensions[1]
     return (width, height)
 
-def calc_stitch_height(height, stitch_count):
-    stich_height = height / stitch_count
+def calc_row_gauge(height, vertical_stitch_count):
+    stich_height = height / vertical_stitch_count
     return stich_height
 
 def calc_stitch_width(width, stitch_count):
     stitch_width = width / stitch_count
     return stitch_width
 
+def calc_stitch_gauge(width, height, vertical_stitches, horizontal_stitches):
+    area = width * height
+    total_stitches = vertical_stitches * horizontal_stitches
+    stitches_per_inch = area // total_stitches
+    return stitches_per_inch
+
+
+# gets the size of the project
 user_size = input('Please input your size: S M L XL XXL ').strip().lower()
 
+#gets the measurements of the project 
 user_measurements = get_measurements(user_size)
 
+#prints measurements for user tso they can validate
 for key in user_measurements:
     print(key, user_measurements[key])
 
+#allows user to adjust measurements
 user_adjustments(user_measurements)
 
+#makes sure user input is valid and makes sure the measurements are correct
 if user_adjustments == 'Invalid response':
     user_adjustments(user_measurements)
 
@@ -67,15 +79,20 @@ double_check_measurements = input('are these measurements correct? y or n ').str
 if double_check_measurements == 'n':
     user_adjustments(user_measurements)
 
+
+#gets swatch data from user and defines proper variables
 swatch_size = input('input the size of your swatch in this format. The first number is width, the second is height. ex. 4x4 ')
 vertical_stitches = int(input('input the number of rows in your swatch '))
 horizontal_stitches = int(input('input how many stitches across your swatch is '))
-
 swatch_height = int(get_width_height(swatch_size)[1])
 swatch_width = int(get_width_height(swatch_size)[0])
 
-stitch_height = calc_stitch_height(swatch_height, vertical_stitches)
+#variables calculated from swatch data
+row_gauge = calc_row_gauge(swatch_height, vertical_stitches)
 stitch_width = calc_stitch_width(swatch_width, horizontal_stitches)
+stitch_gauge = calc_stitch_gauge(swatch_width, swatch_height, vertical_stitches, horizontal_stitches)
 
-print(stitch_height)
-print(stitch_width)
+#defines variable data for sleeves
+sleeve_rows = user_measurements['sleeve length'] * row_gauge
+stitches_at_top = user_measurements['upper arm circ'] * stitch_gauge
+stitches_at_wrist = user_measurements['wrist'] * stitch_gauge
