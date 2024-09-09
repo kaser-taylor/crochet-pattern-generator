@@ -5,7 +5,9 @@ s = {
     'shoulder width': 14.5,
     'arm hole depth': 7.5,
     'waist': 31,
-    'ship': 35
+    'hip': 35,
+    'wrist': 6.25,
+    'neck': 19
 }
 
 m = {
@@ -15,7 +17,9 @@ m = {
     'shoulder width': 15.5,
     'arm hole depth': 8.5,
     'waist': 33,
-    'hip': 39
+    'hip': 39,
+    'wrist': 6.65,
+    'neck': 21
 }
 
 l = {
@@ -25,7 +29,9 @@ l = {
     'shoulder width': 16.5,
     'arm hole depth': 9.5,
     'waist': 37,
-    'hip': 43
+    'hip': 43,
+    'wrist': 7.25,
+    'neck': 23
 }
 
 xl = {
@@ -35,7 +41,9 @@ xl = {
     'shoulder width': 17.5,
     'arm hole depth': 10.5,
     'waist': 41,
-    'hip': 47
+    'hip': 47,
+    'wrist': 7.75,
+    'neck': 25
 }
 
 xxl = {
@@ -45,7 +53,9 @@ xxl = {
     'shoulder width': 18.5,
     'arm hole depth': 11.5,
     'waist': 45,
-    'hip': 51
+    'hip': 51,
+    'wrist': 8.25,
+    'neck': 27
 }
 
 
