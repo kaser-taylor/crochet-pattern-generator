@@ -93,6 +93,9 @@ stitch_width = calc_stitch_width(swatch_width, horizontal_stitches)
 stitch_gauge = calc_stitch_gauge(swatch_width, swatch_height, vertical_stitches, horizontal_stitches)
 
 #defines variable data for sleeves
-sleeve_rows = user_measurements['sleeve length'] * row_gauge
+sleeve_cap_rows = user_measurements['arm hole depth'] * row_gauge
+sleeve_rows = (user_measurements['sleeve length'] * row_gauge) - sleeve_cap_rows
 stitches_at_top = user_measurements['upper arm circ'] * stitch_gauge
 stitches_at_wrist = user_measurements['wrist'] * stitch_gauge
+total_decrease = stitches_at_top - stitches_at_wrist
+
