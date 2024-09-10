@@ -1,4 +1,5 @@
 import measurements
+import pattern_data
 
 def get_measurements(size):
     if size == 's':
@@ -56,6 +57,8 @@ def calc_stitch_gauge(width, height, vertical_stitches, horizontal_stitches):
     stitches_per_inch = area // total_stitches
     return stitches_per_inch
 
+def sleeve_chain(stitches_at_writs):
+    ...
 
 # gets the size of the project
 user_size = input('Please input your size: S M L XL XXL ').strip().lower()
@@ -84,6 +87,7 @@ if double_check_measurements == 'n':
 swatch_size = input('input the size of your swatch in this format. The first number is width, the second is height. ex. 4x4 ')
 vertical_stitches = int(input('input the number of rows in your swatch '))
 horizontal_stitches = int(input('input how many stitches across your swatch is '))
+stitch_type = input('input the stitch used for swatch')
 swatch_height = int(get_width_height(swatch_size)[1])
 swatch_width = int(get_width_height(swatch_size)[0])
 
@@ -95,7 +99,20 @@ stitch_gauge = calc_stitch_gauge(swatch_width, swatch_height, vertical_stitches,
 #defines variable data for sleeves
 sleeve_cap_rows = user_measurements['arm hole depth'] * row_gauge
 sleeve_rows = (user_measurements['sleeve length'] * row_gauge) - sleeve_cap_rows
-stitches_at_top = user_measurements['upper arm circ'] * stitch_gauge
+
+sleeve_stitches_at_top = user_measurements['upper arm circ'] * stitch_gauge
+sleeve_cap_top_stitches = sleeve_stitches_at_top // 2
+
 stitches_at_wrist = user_measurements['wrist'] * stitch_gauge
-total_decrease = stitches_at_top - stitches_at_wrist
+
+sleeve_total_increase = sleeve_stitches_at_top - stitches_at_wrist
+sleeve_rows_between_increase = sleeve_rows // sleeve_total_increase
+sleeve_stitch_increase = 2
+
+sleeve_cap_total_decrease = sleeve_stitches_at_top - sleeve_cap_top_stitches
+sleeve_cap_rows_between_decrease = sleeve_cap_rows // sleeve_cap_total_decrease
+sleeve_cap_stitch_decrease = 2
+
+def generate_sleeve():
+    ...
 
