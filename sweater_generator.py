@@ -1,5 +1,6 @@
 import measurements
 import pattern_data
+import math
 
 def get_measurements(size):
     if size == 's':
@@ -57,8 +58,8 @@ def calc_stitch_gauge(width, height, vertical_stitches, horizontal_stitches):
     stitches_per_inch = area // total_stitches
     return stitches_per_inch
 
-def sleeve_chain(stitches_at_writs):
-    ...
+
+
 
 # gets the size of the project
 user_size = input('Please input your size: S M L XL XXL ').strip().lower()
@@ -87,7 +88,7 @@ if double_check_measurements == 'n':
 swatch_size = input('input the size of your swatch in this format. The first number is width, the second is height. ex. 4x4 ')
 vertical_stitches = int(input('input the number of rows in your swatch '))
 horizontal_stitches = int(input('input how many stitches across your swatch is '))
-stitch_type = input('input the stitch used for swatch')
+stitch_type = input('input the stitch used for swatch ')
 swatch_height = int(get_width_height(swatch_size)[1])
 swatch_width = int(get_width_height(swatch_size)[0])
 
@@ -100,10 +101,10 @@ stitch_gauge = calc_stitch_gauge(swatch_width, swatch_height, vertical_stitches,
 sleeve_cap_rows = user_measurements['arm hole depth'] * row_gauge
 sleeve_rows = (user_measurements['sleeve length'] * row_gauge) - sleeve_cap_rows
 
-sleeve_stitches_at_top = user_measurements['upper arm circ'] * stitch_gauge
+sleeve_stitches_at_top = math.floor((user_measurements['upper arm circ'] + 1) * stitch_gauge)
 sleeve_cap_top_stitches = sleeve_stitches_at_top // 2
 
-stitches_at_wrist = user_measurements['wrist'] * stitch_gauge
+stitches_at_wrist = math.floor((user_measurements['wrist'] + 1) * stitch_gauge)
 
 sleeve_total_increase = sleeve_stitches_at_top - stitches_at_wrist
 sleeve_rows_between_increase = sleeve_rows // sleeve_total_increase
@@ -113,6 +114,17 @@ sleeve_cap_total_decrease = sleeve_stitches_at_top - sleeve_cap_top_stitches
 sleeve_cap_rows_between_decrease = sleeve_cap_rows // sleeve_cap_total_decrease
 sleeve_cap_stitch_decrease = 2
 
-def generate_sleeve():
-    ...
 
+def generate_row_1(stitch_type, stitches_at_wrist):
+    stitch = pattern_data.crochet_stitches[stitch_type]
+    ch_increment = pattern_data.row_start_stitch_type_int[stitch]
+    print(f'Row 1: Ch {stitches_at_wrist + ch_increment}; {stitch} in {ch_increment} from hook in each ch across ')
+
+def calculate_repeat(sleeve_rows, rows_between_increase):
+    ...
+    
+        
+       
+    
+
+## remember to add 2 inches to bust wait & hips for ease

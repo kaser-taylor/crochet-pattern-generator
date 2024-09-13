@@ -1,0 +1,28 @@
+rows = 11
+rows_between = 3
+
+def calculate_repeat(rows, rows_between):
+    increment = rows // rows_between
+    remaining_rows = rows % increment
+    bulk_repeat = 0
+    ind_repeat = 0
+    for i in range(increment):
+        bulk_repeat += 1
+    for i in range(rows_between - 1):
+        ind_repeat += 1
+    
+    answer = [bulk_repeat, ind_repeat, remaining_rows]
+    return answer
+    
+def print_rows(row_data, rows):
+    row_counter = 1
+    for i in range(0, rows, row_data[0]):
+        print(f'Row {row_counter}-{row_counter + row_data[1]} sc', '\n')
+        print(f'Row {row_counter + row_data[0]} 2sc in first st 2sc in last')
+        row_counter += row_data[0]
+    if rows - row_counter == row_data[2]:
+        print(f'Row {row_counter}-{rows} sc')
+    
+
+print(calculate_repeat(rows, rows_between))
+print_rows(calculate_repeat(rows, rows_between), rows)
