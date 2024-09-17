@@ -17,17 +17,22 @@ def print_regular_repeat(row_counter, regular_repeat):
 def print_increase(row_counter):
     print(f'Row {row_counter} 2sc in first st 2sc in last')
 
-def print_rows(rows, repeat, remaing_rows):
+def print_rows(rows, rows_between, remaing_rows):
+    repeat = rows // rows_between
     row_counter = 2
     while row_counter < rows - remaing_rows:
         if row_counter % repeat == 0:
             print_increase(row_counter)
             row_counter += 1
-        if row_counter + repeat < rows:  
+        elif rows - row_counter == remaing_rows:
+            print(f'Sc {row_counter} - {rows}')
+        else:  
             print_regular_repeat(row_counter, repeat)
-            row_counter += repeat
+            row_counter += rows_between
 
-print_rows(rows, calculate_repeat(rows, rows_between), calculate_remaining_rows(rows, rows_between))
+print_rows(rows, rows_between, calculate_remaining_rows(rows, rows_between))
+
+# print_rows(rows, calculate_repeat(rows, rows_between), calculate_remaining_rows(rows, rows_between))
 
 # def print_rows(row_data, rows):
 #     row_counter = 2
