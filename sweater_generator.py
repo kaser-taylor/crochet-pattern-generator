@@ -1,5 +1,6 @@
 import measurements
 import pattern_data
+import print_increases
 import math
 
 def get_measurements(size):
@@ -98,13 +99,13 @@ stitch_width = calc_stitch_width(swatch_width, horizontal_stitches)
 stitch_gauge = calc_stitch_gauge(swatch_width, swatch_height, vertical_stitches, horizontal_stitches)
 
 #defines variable data for sleeves
-sleeve_cap_rows = user_measurements['arm hole depth'] * row_gauge
-sleeve_rows = (user_measurements['sleeve length'] * row_gauge) - sleeve_cap_rows
+sleeve_cap_rows = int(user_measurements['arm hole depth'] * row_gauge)
+sleeve_rows = int((user_measurements['sleeve length'] * row_gauge) - sleeve_cap_rows)
 
-sleeve_stitches_at_top = math.floor((user_measurements['upper arm circ'] + 1) * stitch_gauge)
+sleeve_stitches_at_top = int((user_measurements['upper arm circ'] + 1) * stitch_gauge)
 sleeve_cap_top_stitches = sleeve_stitches_at_top // 2
 
-stitches_at_wrist = math.floor((user_measurements['wrist'] + 1) * stitch_gauge)
+stitches_at_wrist = int((user_measurements['wrist'] + 1) * stitch_gauge)
 
 sleeve_total_increase = sleeve_stitches_at_top - stitches_at_wrist
 sleeve_rows_between_increase = sleeve_rows // sleeve_total_increase
@@ -120,10 +121,9 @@ def generate_row_1(stitch_type, stitches_at_wrist):
     ch_increment = pattern_data.row_start_stitch_type_int[stitch]
     print(f'Row 1: Ch {stitches_at_wrist + ch_increment}; {stitch} in {ch_increment} from hook in each ch across ')
 
-def calculate_repeat(sleeve_rows, rows_between_increase):
-    ...
-    
-        
+print_increases.print_rows(sleeve_rows, sleeve_rows_between_increase)
+print(sleeve_rows)   
+print(sleeve_rows_between_increase)
        
     
 
