@@ -14,7 +14,7 @@ def print_regular_repeat(row_counter, rows_between, stitch):
 def print_increase(row_counter, stitch):
     print(f'Row {row_counter} 2{stitch} in first st 2{stitch} in last')
 
-def print_rows(rows, rows_between):
+def print_rows(rows, rows_between, stitch):
     row_counter = 2
     increase = False
     increase_counter = 0
@@ -24,11 +24,11 @@ def print_rows(rows, rows_between):
              break
         else: 
             if increase == False:
-                print_regular_repeat(row_counter, rows_between)
+                print_regular_repeat(row_counter, rows_between, stitch)
                 row_counter += (rows_between)
                 increase = True
             else:
-                print_increase(row_counter)
+                print_increase(row_counter, stitch)
                 row_counter += 1
                 increase = False
                 increase_counter += 1
