@@ -88,7 +88,7 @@ def get_swatch_data():
     swatch_data['swatch_size'] = input('input the size of your swatch in this format. The first number is width, the second is height. ex. 4x4 ')
     swatch_data['vertical_stitches'] = int(input('input the number of rows in your swatch '))
     swatch_data['horizontal_stitches'] = int(input('input how many stitches across your swatch is '))
-    swatch_data['stitch_type'] = input('input the stitch used for swatch ')
+    swatch_data['stitch_type'] = crochet_stitches[input('input the stitch used for swatch ').strip().lower()]
     swatch_data['swatch_height'] = int(get_width_height(swatch_data['swatch_size'])[1])
     swatch_data['swatch_width']= int(get_width_height(swatch_data['swatch_size'])[0])
     swatch_data['row_gauge'] = calc_row_gauge(swatch_data['swatch_height'], swatch_data['vertical_stitches'])

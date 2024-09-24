@@ -86,7 +86,7 @@ def get_measurements(size):
 def user_adjustments(user_measurements):
     y_or_n = input('Would you like to make measurement adjustments? y or n ').strip().lower()
     if y_or_n == 'n':
-        return('Okay!!')
+        return(user_measurements)
     elif y_or_n == 'y':
         stop = False
         while stop != True: 
