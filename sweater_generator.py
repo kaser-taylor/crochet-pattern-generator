@@ -1,5 +1,5 @@
 import measurements
-import pattern_data
+import stitch_data
 import print_increases
 import math
 
@@ -117,8 +117,8 @@ sleeve_cap_stitch_decrease = 2
 
 
 def generate_row_1(stitch_type, stitches_at_wrist):
-    stitch = pattern_data.crochet_stitches[stitch_type]
-    ch_increment = pattern_data.row_start_stitch_type_int[stitch]
+    stitch = stitch_data.crochet_stitches[stitch_type]
+    ch_increment = stitch_data.row_start_stitch_type_int[stitch]
     print(f'Row 1: Ch {stitches_at_wrist + ch_increment}; {stitch} in {ch_increment} from hook in each ch across ')
 
 print_increases.print_rows(sleeve_rows, sleeve_rows_between_increase, stitch_type)

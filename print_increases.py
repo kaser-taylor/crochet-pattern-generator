@@ -33,4 +33,4 @@ def print_rows(rows, rows_between, stitch):
                 increase = False
                 increase_counter += 1
     else:
-        print(f'Row {row_counter} - {row} ')
+        print(f'Row {row_counter} - {rows} ')
