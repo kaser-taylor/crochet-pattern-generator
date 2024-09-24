@@ -61,3 +61,38 @@ row_start_stitch_type_int = {
     'bob': 3,           # Bobble stitch (usually similar to double crochet height)
     'sp st': 1          # Spike stitch (same as single crochet)
 }
+
+def get_width_height(swatch_size):
+    dimensions = swatch_size.split('x')
+    width = dimensions[0]
+    height = dimensions[1]
+    return (width, height)
+
+def calc_row_gauge(height, vertical_stitch_count):
+    stich_height = height / vertical_stitch_count
+    return stich_height
+
+def calc_stitch_width(width, stitch_count):
+    stitch_width = width / stitch_count
+    return stitch_width
+
+def calc_stitch_gauge(width, height, vertical_stitches, horizontal_stitches):
+    area = width * height
+    total_stitches = vertical_stitches * horizontal_stitches
+    stitches_per_inch = area // total_stitches
+    return stitches_per_inch
+
+
+def get_swatch_data():
+    swatch_data = {}
+    swatch_data['swatch_size'] = input('input the size of your swatch in this format. The first number is width, the second is height. ex. 4x4 ')
+    swatch_data['vertical_stitches'] = int(input('input the number of rows in your swatch '))
+    swatch_data['horizontal_stitches'] = int(input('input how many stitches across your swatch is '))
+    swatch_data['stitch_type'] = input('input the stitch used for swatch ')
+    swatch_data['swatch_height'] = int(get_width_height(swatch_data['swatch_size'])[1])
+    swatch_data['swatch_width']= int(get_width_height(swatch_data['swatch_size'])[0])
+    swatch_data['row_gauge'] = calc_row_gauge(swatch_data['swatch_height'], swatch_data['vertical_stitches'])
+    swatch_data['stitch_width'] = calc_stitch_width(swatch_data['swatch_width'], ['horizontal_stitches'])
+    swatch_data['stitch_gauge'] = calc_stitch_gauge(swatch_data['swatch_width'], swatch_data['swatch_height'], swatch_data['vertical_stitches'], swatch_data['horizontal_stitches'])
+
+    return swatch_data

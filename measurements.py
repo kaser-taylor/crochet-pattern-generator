@@ -63,4 +63,45 @@ xxl = {
     'upper arm circ': 17.5
 }
 
+#gets the measurements of the project 
+def get_size():
+    user_size = input('Please input your size: S M L XL XXL ').strip().lower()
 
+    return user_size
+
+def get_measurements(size):
+    if size == 's':
+        return s
+    elif size == 'm':
+        return m
+    elif size == 'l':
+        return l
+    elif size == 'xl':
+        return xl
+    elif size == 'xxl':
+        return xxl
+    else:
+        return('Sizing option not available')
+
+def user_adjustments(user_measurements):
+    y_or_n = input('Would you like to make measurement adjustments? y or n ').strip().lower()
+    if y_or_n == 'n':
+        return('Okay!!')
+    elif y_or_n == 'y':
+        stop = False
+        while stop != True: 
+            measurement_to_adjust = input('Input value to adjust, s to exit ')
+            if measurement_to_adjust == 's':
+                stop = True
+            else:
+                measurement = int(input())
+                user_measurements[measurement_to_adjust] = measurement
+                print(user_measurements[measurement_to_adjust])
+        else:
+            for key in user_measurements:
+                print(key, user_measurements[key])
+            return(user_measurements)
+    else:
+        return('Invalid response')
+
+user_measurements = get_measurements(get_size())
