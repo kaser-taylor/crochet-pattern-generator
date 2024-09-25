@@ -1,7 +1,8 @@
 import measurements
 import stitch_swatch_data
 import sweater_pattern_data
-import print_increases
+import print_rows
+import first_row
 
 def main():
     #gets user size
@@ -17,10 +18,13 @@ def main():
     swatch_data = stitch_swatch_data.get_swatch_data()
 
     #sleeve_data
-    sleeve_data = sweater_pattern_data.define_sleeve_variables()
+    sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data)
+
+    #prints first row
+    first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'])
 
     #prints sleeve
-    print_increases(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
+    print_rows.print_rows(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
 
 if __name__ == '__main__':
     main()

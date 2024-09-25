@@ -71,26 +71,33 @@ def get_size():
 
 def get_measurements(size):
     if size == 's':
+        print(s)
         return s
     elif size == 'm':
+        print(m)
         return m
     elif size == 'l':
+        print(l)
         return l
     elif size == 'xl':
+        print(xl)
         return xl
     elif size == 'xxl':
+        print(xxl)
         return xxl
     else:
         return('Sizing option not available')
 
 def user_adjustments(user_measurements):
+    global final_measurements
     y_or_n = input('Would you like to make measurement adjustments? y or n ').strip().lower()
     if y_or_n == 'n':
-        return(user_measurements)
+        final_measurements = user_measurements
+        return final_measurements
     elif y_or_n == 'y':
         stop = False
         while stop != True: 
-            measurement_to_adjust = input('Input value to adjust, s to exit ')
+            measurement_to_adjust = input('Input value to adjust, s to exit ').strip().lower()
             if measurement_to_adjust == 's':
                 stop = True
             else:
@@ -100,8 +107,7 @@ def user_adjustments(user_measurements):
         else:
             for key in user_measurements:
                 print(key, user_measurements[key])
-            return(user_measurements)
+            final_measurements = user_measurements
+            return final_measurements
     else:
         return('Invalid response')
-
-user_measurements = get_measurements(get_size())
