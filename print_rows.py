@@ -28,9 +28,9 @@ def print_rows(rows, rows_between, stitch):
                 row_counter += (rows_between)
                 increase = True
             else:
+                row_counter += 1
                 print_increase(row_counter, stitch)
                 row_counter += 1
                 increase = False
-                increase_counter += 1
     else:
         print(f'Row {row_counter} - {rows} ')
