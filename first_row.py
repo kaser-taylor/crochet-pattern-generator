@@ -24,3 +24,7 @@ def print_first_row(length, stitch_type, stitch_gauge):
     
     ch_increment = row_start_stitch_type_int[stitch_type]
     print(f'Row 1: Ch {int((length / stitch_gauge) + ch_increment)}; {stitch_type} in {ch_increment} from hook in each ch across ')
+
+def print_first_row_new_section(row, stitch_type):
+    print(f'Row {row}: {stitch_type}')
+    return row

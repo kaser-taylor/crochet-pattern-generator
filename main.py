@@ -21,11 +21,14 @@ def main():
     sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data, final_measurements)
     print(sleeve_data)
 
-    #prints first row5
+    #prints first row of sleeve
     first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'], swatch_data['stitch_gauge'])
 
     #prints sleeve
-    print_rows.print_rows(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
+    print_sleeve_data = print_rows.print_rows_increase(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
+    
+    #prints first row of sleeve cap
+    sleeve_cap_first_row_data = first_row.print_first_row_new_section(print_sleeve_data['row_counter'], swatch_data['stitch_type'])
 
 if __name__ == '__main__':
     main()

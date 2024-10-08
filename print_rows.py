@@ -1,12 +1,12 @@
-def calculate_repeat(rows, rows_between):
-    num_repeats = rows // rows_between
+# def calculate_repeat(rows, rows_between):
+#     num_repeats = rows // rows_between
 
-    return num_repeats
+#     return num_repeats
 
-def calculate_remaining_rows(rows, rows_between, repeat):
-    remaining_rows = rows - (rows_between * (repeat))
+# def calculate_remaining_rows(rows, rows_between, repeat):
+#     remaining_rows = rows - (rows_between * (repeat))
     
-    return remaining_rows
+#     return remaining_rows
     
 def print_regular_repeat(row_counter, rows_between, stitch):
     print(f'Row {row_counter} - {row_counter + rows_between} {stitch}')
@@ -14,7 +14,7 @@ def print_regular_repeat(row_counter, rows_between, stitch):
 def print_increase(row_counter, stitch):
     print(f'Row {row_counter} 2{stitch} in first st 2{stitch} in last')
 
-def print_rows(rows, rows_between, num_increases, stitch):
+def print_rows_increase(rows, rows_between, num_increases, stitch):
     row_counter = 2
     increase = False
     increase_counter = 0
@@ -43,6 +43,14 @@ def print_rows(rows, rows_between, num_increases, stitch):
                 row_counter += 1
                 increase_counter += 1
                 increase = False
+    
+    print_data = {
+        'row_counter': row_counter
+    }
 
+    return print_data
+
+# def print_rows_decrease {}
+ 
             
 
