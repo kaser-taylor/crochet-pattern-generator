@@ -25,7 +25,7 @@ def main():
     first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'], swatch_data['stitch_gauge'])
 
     #prints sleeve
-    print_rows.print_rows(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
+    print_rows.print_rows(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
 
 if __name__ == '__main__':
     main()
