@@ -17,6 +17,22 @@ def print_increase(row_counter, stitch):
 def print_decrease(row_counter, stitch_count, stitch):
     print(f'Row {row_counter} {stitch}2tog, {stitch} in the next {stitch_count - 4}, {stitch}2tog')
 
+
+# this pulls apart original print_rows function
+def print_rows (rows_between, stitch, increase):
+    if increase == False:
+            print_regular_repeat(row_counter, rows_between, stitch)
+            row_counter += (rows_between)
+            increase = True
+    else:
+        row_counter += 1
+        print_increase(row_counter, stitch)
+        row_counter += 1
+        increase_counter += 1
+        increase = False
+
+def row_tracker(rows, num_increases):
+
 # this can definetely be reduced to one function with different calls
 def print_rows_increase(rows, rows_between, num_increases, stitch):
     row_counter = 2
@@ -47,7 +63,7 @@ def print_rows_increase(rows, rows_between, num_increases, stitch):
                 row_counter += 1
                 increase_counter += 1
                 increase = False
-    
+
     print_data = {
         'row_counter': row_counter
     }
