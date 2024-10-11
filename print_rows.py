@@ -19,19 +19,32 @@ def print_decrease(row_counter, stitch_count, stitch):
 
 
 # this pulls apart original print_rows function
-def print_rows (rows_between, stitch, increase):
-    if increase == False:
-            print_regular_repeat(row_counter, rows_between, stitch)
-            row_counter += (rows_between)
-            increase = True
+def print_rows (tracked_data, rows_between, stitch, increase):
+    if tracked_data['increase'] == False:
+            print_regular_repeat(tracked_data['row_counter'], rows_between, stitch)
+            tracked_data['row_counter'] += (rows_between)
+            tracked_data['increase'] = True
     else:
-        row_counter += 1
-        print_increase(row_counter, stitch)
-        row_counter += 1
-        increase_counter += 1
-        increase = False
+        tracked_data['row_counter'] += 1
+        print_increase(tracked_data['row_counter'], stitch)
+        tracked_data['row_counter'] += 1
+        tracked_data['increase_counter'] += 1
+        tracked_data['increase'] = False
 
-def row_tracker(rows, num_increases):
+# This handles the while loop for printing the right amount of rows 
+def row_tracker(rows, num_increases, rows_between, stitch, increase):
+    tracking_data = {
+        'row_counter': 2,
+        'increase': False,
+        'increase_counter': 0
+    }
+
+    while tracking_data['row_counter'] < rows:
+        if (tracking_data['row_counter'] + 1) > rows or (tracking_data['row_counter'] + rows_between + 1) > rows:
+            final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
+            print_rows(tracking_data, final_rows_between, stitch, increase)
+        else:
+            print_rows(tracking_data, rows_between, stitch, increase)
 
 # this can definetely be reduced to one function with different calls
 def print_rows_increase(rows, rows_between, num_increases, stitch):
