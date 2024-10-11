@@ -22,7 +22,7 @@ def define_sleeve_variables(swatch_data, measurements):
     sleeve_variables['sleeve_cap_total_decrease'] = sleeve_variables['calculated_sleeve_stitches_at_top'] - sleeve_variables['sleeve_cap_top_stitches']
     sleeve_variables['sleeve_cap_rows_between_decrease'] = sleeve_variables['sleeve_cap_rows'] // sleeve_variables['sleeve_cap_total_decrease']
     sleeve_variables['sleeve_cap_stitch_decrease'] = 2
-    sleeve_variables['sleeve_total_num_decreases'] = ''
+    sleeve_variables['sleeve_cap_total_num_decreases'] = int(sleeve_variables['sleeve_cap_total_decrease'] / sleeve_variables['sleeve_cap_stitch_decrease'])
 
     return sleeve_variables
 
