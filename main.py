@@ -25,10 +25,13 @@ def main():
     first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'], swatch_data['stitch_gauge'])
 
     #prints sleeve
-    print_sleeve_data = print_rows.print_rows_increase(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
-    
+    # print_sleeve_data = print_rows.print_rows_increase(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
+    print_sleeve_data = print_rows.row_tracker(sleeve_data['sleeve_rows'], sleeve_data['sleeve_total_num_increases'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
+
     #prints first row of sleeve cap
     sleeve_cap_first_row_data = first_row.print_first_row_new_section(print_sleeve_data['row_counter'], swatch_data['stitch_type'])
 
+    #prints sleeve cap
+    sleeve_cap_data = print_rows.row_tracker(sleeve_data['calculated_sleeve_cap_rows'], sleeve_data['sleeve_cap_total_num_decreases'], sleeve_data['sleeve_cap_rows_between_decrease'], swatch_data['stitch_type'], 'decrease', sleeve_data['calculated_sleeve_stitches_at_top'], (print_sleeve_data['row_counter'] + 1))
 if __name__ == '__main__':
     main()

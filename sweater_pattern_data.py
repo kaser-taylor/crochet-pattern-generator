@@ -7,6 +7,7 @@ def define_sleeve_variables(swatch_data, measurements):
 
     sleeve_variables['sleeve_cap_rows'] = int(measurements['arm hole depth'] / swatch_data['stitch_height'])
     sleeve_variables['sleeve_rows'] = int((measurements['sleeve length'] / swatch_data['stitch_height']) - sleeve_variables['sleeve_cap_rows'])
+    sleeve_variables['calculated_sleeve_cap_rows'] = int(sleeve_variables['sleeve_cap_rows'] + sleeve_variables['sleeve_rows'])
 
     sleeve_variables['estimated_sleeve_stitches_at_top'] = int((measurements['upper arm circ'] + 1) * swatch_data['row_gauge'])
 
@@ -15,14 +16,15 @@ def define_sleeve_variables(swatch_data, measurements):
     sleeve_variables['sleeve_total_increase'] = sleeve_variables['estimated_sleeve_stitches_at_top'] - sleeve_variables['stitches_at_wrist']
     sleeve_variables['sleeve_stitch_increase'] = 2
     sleeve_variables['sleeve_rows_between_increase'] = int((sleeve_variables['sleeve_rows'] / (sleeve_variables['sleeve_total_increase'] / sleeve_variables['sleeve_stitch_increase'])))
-    sleeve_variables['sleeve_total_num_increases'] = sleeve_variables['sleeve_total_increase'] / sleeve_variables['sleeve_stitch_increase']
+    sleeve_variables['sleeve_total_num_increases'] = int(sleeve_variables['sleeve_total_increase'] / sleeve_variables['sleeve_stitch_increase'])
     sleeve_variables['calculated_sleeve_stitches_at_top'] = sleeve_variables['stitches_at_wrist'] + (sleeve_variables['sleeve_stitch_increase'] * math.floor(sleeve_variables['sleeve_total_num_increases']))
+
 
     sleeve_variables['sleeve_cap_top_stitches'] = sleeve_variables['calculated_sleeve_stitches_at_top'] // 2
     sleeve_variables['sleeve_cap_total_decrease'] = sleeve_variables['calculated_sleeve_stitches_at_top'] - sleeve_variables['sleeve_cap_top_stitches']
     sleeve_variables['sleeve_cap_rows_between_decrease'] = sleeve_variables['sleeve_cap_rows'] // sleeve_variables['sleeve_cap_total_decrease']
     sleeve_variables['sleeve_cap_stitch_decrease'] = 2
-    sleeve_variables['sleeve_total_num_decreases'] = ''
+    sleeve_variables['sleeve_cap_total_num_decreases'] = int(sleeve_variables['sleeve_cap_total_decrease'] / sleeve_variables['sleeve_cap_stitch_decrease'])
 
     return sleeve_variables
 
