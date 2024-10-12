@@ -43,10 +43,13 @@ def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitc
         if (tracking_data['row_counter']) >= rows or (tracking_data['row_counter'] + rows_between) >= rows:
             final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
             print_rows(tracking_data, final_rows_between, stitch, i_d)
+            break
         else:
             print_rows(tracking_data, rows_between, stitch, i_d)
     
-
+    while num_increases != tracking_data['increase_counter']:
+        final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
+        print_rows(tracking_data, rows_between, stitch, i_d)
     
     return tracking_data
 
