@@ -1,3 +1,5 @@
+import math
+
 crochet_stitches = {
     "chain": "ch",
     "slip stitch": "sl st",

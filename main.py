@@ -22,7 +22,7 @@ def main():
     print(sleeve_data)
 
     #prints first row of sleeve
-    first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'], swatch_data['stitch_gauge'])
+    first_row.print_first_row(final_measurements['wrist'], swatch_data['stitch_type'], swatch_data['stitch_width'])
 
     #prints sleeve
     # print_sleeve_data = print_rows.print_rows_increase(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
