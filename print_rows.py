@@ -10,7 +10,7 @@ def print_decrease(row_counter, stitch_count, stitch):
 
 
 # this pulls apart original print_rows function
-def print_rows (tracked_data, rows_between, stitch, i_d, stitch_count):
+def print_rows (tracked_data, rows_between, stitch, i_d):
     if tracked_data['increase'] == False:
             print_regular_repeat(tracked_data['row_counter'], rows_between, stitch)
             tracked_data['row_counter'] += (rows_between)
@@ -24,26 +24,29 @@ def print_rows (tracked_data, rows_between, stitch, i_d, stitch_count):
             tracked_data['increase'] = False
         else:
             tracked_data['row_counter'] += 1
-            print_decrease(tracked_data['row_counter'], stitch_count, stitch)
+            print_decrease(tracked_data['row_counter'], tracked_data['stitch_count'], stitch)
             tracked_data['row_counter'] += 1
             tracked_data['increase_counter'] += 1
             tracked_data['increase'] = False
-            stitch_count -= 2
+            tracked_data['stitch_count'] -= 2
 
 # This handles the while loop for printing the right amount of rows 
 def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitch_count=0, row_counter=2):
     tracking_data = {
         'row_counter': row_counter,
         'increase': False,
-        'increase_counter': 0
+        'increase_counter': 0,
+        'stitch_count': stitch_count
     }
 
     while tracking_data['row_counter'] < rows:
-        if (tracking_data['row_counter'] + 1) > rows or (tracking_data['row_counter'] + rows_between + 1) > rows:
+        if (tracking_data['row_counter']) >= rows or (tracking_data['row_counter'] + rows_between) >= rows:
             final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
-            print_rows(tracking_data, final_rows_between, stitch, i_d, stitch_count)
+            print_rows(tracking_data, final_rows_between, stitch, i_d)
         else:
-            print_rows(tracking_data, rows_between, stitch, i_d, stitch_count)
+            print_rows(tracking_data, rows_between, stitch, i_d)
+    
+
     
     return tracking_data
 
