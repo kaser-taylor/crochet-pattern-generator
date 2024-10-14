@@ -14,15 +14,21 @@ def main():
     #gets user adjusments 
     final_measurements = measurements.user_adjustments(default_measurements)
 
+    #gets desired fit
+    baggy_factor = measurements.define_baggy_factor()
+
+    #adjusts measurements to desired fit
+    processed_measurements = measurements.processed_measurements(final_measurements, baggy_factor)
+
     #gets swatch data from user and calculates data from that
     swatch_data = stitch_swatch_data.get_swatch_data()
 
     #sleeve_data
-    sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data, final_measurements)
+    sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data, processed_measurements)
     print(sleeve_data)
 
     #prints first row of sleeve
-    first_row.print_first_row(sleeve_data['stitches_at_wrist'], swatch_data['stitch_type'], swatch_data['stitch_gauge'])
+    first_row.print_first_row(processed_measurements['wrist'], swatch_data['stitch_type'], swatch_data['stitch_width'])
 
     #prints sleeve
     # print_sleeve_data = print_rows.print_rows_increase(sleeve_data['sleeve_rows'], sleeve_data['sleeve_rows_between_increase'], sleeve_data['sleeve_total_num_increases'], swatch_data['stitch_type'])
