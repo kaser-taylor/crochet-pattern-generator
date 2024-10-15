@@ -64,9 +64,9 @@ xxl = {
 }
 
 baggy_factor = {
-    'casual fit': 4,
+    'casual': 4,
     'oversized': 7,
-    'tight fit': 2,
+    'tight': 2,
 }
 
 #gets the measurements of the project 
@@ -95,7 +95,7 @@ def get_measurements(size):
         return('Sizing option not available')
 
 def define_baggy_factor():
-    user_input = input(f'What would you like the fit of your sweater to be? Casual Fit, Oversized, Tight').strip().lower()
+    user_input = input(f'What would you like the fit of your sweater to be? Casual, Oversized, Tight ').strip().lower()
     ease = baggy_factor[user_input]
 
     return ease
@@ -127,5 +127,5 @@ def user_adjustments(user_measurements):
 
 def processed_measurements(final_measurements, ease):
     for measurement in final_measurements:
-        measurement += ease
+        final_measurements[measurement] += ease
     return final_measurements

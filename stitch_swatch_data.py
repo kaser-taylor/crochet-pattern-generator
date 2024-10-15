@@ -76,8 +76,8 @@ def calc_stitch_width(width, stitch_count):
     stitch_width = width / stitch_count
     return stitch_width
 
-def calc_stitch_height(height, stitch_count):
-    stitch_height = height / stitch_count
+def calc_stitch_height(height, row_count):
+    stitch_height = height / row_count
     return stitch_height
 
 def calc_stitch_gauge(width, height, vertical_stitches, horizontal_stitches):
