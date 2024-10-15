@@ -1,0 +1,3 @@
+a ≈ -0.05 would give a gentle curve, gradually sloping down from the top of the shoulder.
+b would represent the slope at the widest part of the arm.
+c would be the height at the top of the shoulder (starting point).
