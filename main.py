@@ -39,5 +39,8 @@ def main():
 
     #prints sleeve cap
     sleeve_cap_data = print_rows.row_tracker(sleeve_data['calculated_sleeve_cap_rows'], sleeve_data['sleeve_cap_total_num_decreases'], sleeve_data['sleeve_cap_rows_between_decrease'], swatch_data['stitch_type'], 'decrease', sleeve_data['calculated_sleeve_stitches_at_top'], (print_sleeve_data['row_counter'] + 1))
+
+    #test commit after making private
+    test = 'test'
 if __name__ == '__main__':
     main()
