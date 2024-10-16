@@ -16,8 +16,7 @@ def find_x(a, arm_hole_depth, stitch_height):
 
 def find_width(a, arm_hole_depth, stitch_height, rows):
     row_widths = {}
-    for i in range(rows):
-        stitch_height *= i
+    for i in range(rows + 1):
         row_widths[f'row {i + 1}'] = round(find_x(a, arm_hole_depth, stitch_height * i), 4) * 2
     
     return row_widths
