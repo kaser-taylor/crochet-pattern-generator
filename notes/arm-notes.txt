@@ -1,3 +1,7 @@
 a ≈ -0.05 would give a gentle curve, gradually sloping down from the top of the shoulder.
 b would represent the slope at the widest part of the arm.
 c would be the height at the top of the shoulder (starting point).
+
+test stitch width 1, .5 , 5
+
+test answers 9.7716, 19.4352, 1.9543

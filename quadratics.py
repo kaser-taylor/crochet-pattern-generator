@@ -6,19 +6,18 @@ def calculate_parabola_slope(upper_arm_circ, arm_hole_depth):
     y = 0
     x = upper_arm_circ / 2
     c = arm_hole_depth
-    a = (y - c) / (x ** 2)
+    a = round((y - c) / (x ** 2), 4)
 
     return a
 
 def find_x(a, arm_hole_depth, stitch_height):
-    x = math.sqrt((stitch_height - arm_hole_depth) / a)
+    x = round(math.sqrt((stitch_height - arm_hole_depth) / a), 4)
     return x
 
 def find_width(a, arm_hole_depth, stitch_height, rows):
     row_widths = {}
-    for i in range(rows):
-        stitch_height *= i
-        row_widths[f'row {i}'] = find_x(a, arm_hole_depth, stitch_height) * 2
+    for i in range(rows + 1):
+        row_widths[f'row {i + 1}'] = round(find_x(a, arm_hole_depth, stitch_height * i), 4) * 2
     
     return row_widths
 
