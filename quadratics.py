@@ -6,7 +6,7 @@ def calculate_parabola_slope(upper_arm_circ, arm_hole_depth):
     y = 0
     x = upper_arm_circ / 2
     c = arm_hole_depth
-    a = (y - c) / (x ** 2)
+    a = round((y - c) / (x ** 2), 4)
 
     return a
 
