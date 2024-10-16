@@ -31,6 +31,23 @@ class test_quadratics(unittest.TestCase):
         for row in expected_values:
             self.assertAlmostEqual(actual_values[row], expected_values[row], places=3)
             
+    def test_calculate_stitches_per_row(self):
+        row_widths = quadratics.find_width(-.2723, 7.5, 1, 7)
+        expected_values = {
+            'row 1': 10, 
+            'row 2': 9, 
+            'row 3': 8, 
+            'row 4': 8, 
+            'row 5': 7, 
+            'row 6': 6, 
+            'row 7': 4, 
+            'row 8': 2
+        }
 
+        actual_values = quadratics.calculate_stitches_per_row(row_widths, 1)
+
+        self.assertEqual(actual_values, expected_values)
+
+        
 if __name__ == '__main__':
     unittest.main()
