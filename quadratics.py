@@ -32,6 +32,8 @@ def calculate_decrease(stitches_per_row):
     decrease_between_rows = {}
 
     for i in range(len(stitches_per_row) - 1):
-        decrease_between_rows[f'row {i} - {i+1}'] = stitches_per_row[i + 1] - stitches_per_row[i]
+        decrease_between_rows[f'row {i} - {i+1}'] = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
+
+    return decrease_between_rows
 
 print(find_width(-.2723, 7.5, 1, 7))

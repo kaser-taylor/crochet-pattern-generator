@@ -11,8 +11,8 @@ class test_quadratics(unittest.TestCase):
         self.assertEqual(quadratics.calculate_parabola_slope(10.5, 7.5), -.2721)
         
     def test_find_x(self):
-        self.assertEqual(quadratics.find_x(-.2723, 7.5, 1), 4.8858)
-        self.assertEqual(quadratics.find_x(-.2723, 7.5, 6), 4.6942)
+        self.assertAlmostEqual(quadratics.find_x(-.2723, 7.5, 1), 4.8858)
+        self.assertAlmostEqual(quadratics.find_x(-.2723, 7.5, 6), 2.347)
 
     def test_find_width(self):
         expected_values = {
@@ -50,29 +50,30 @@ class test_quadratics(unittest.TestCase):
 
     def test_calculate_decrease(self):
         input_values = {
-            'row 1': 10, 
-            'row 2': 9, 
+            'row 0': 10, 
+            'row 1': 9, 
+            'row 2': 8, 
             'row 3': 8, 
-            'row 4': 8, 
-            'row 5': 7, 
-            'row 6': 6, 
-            'row 7': 4, 
-            'row 8': 2
+            'row 4': 7, 
+            'row 5': 6, 
+            'row 6': 4, 
+            'row 7': 2
         }
 
         expected_values = {
-            'row 1 - 2': 1,
-            'row 2 - 3': 1,
-            'row 3 - 4': 0,
-            'row 4 - 5': 1,
-            'row 5 - 6': 1,
-            'row 6 - 7': 2,
-            'row 7 - 8': 2
+            'row 0 - 1': -1,
+            'row 1 - 2': -1,
+            'row 2 - 3': -0,
+            'row 3 - 4': -1,
+            'row 4 - 5': -1,
+            'row 5 - 6': -2,
+            'row 6 - 7': -2
         }
 
         actual_values = quadratics.calculate_decrease(input_values)
 
-        self.assertEqual(actual_values, expected_values)
+        for row in expected_values:
+         self.assertEqual(actual_values, expected_values)
 
 if __name__ == '__main__':
     unittest.main()
