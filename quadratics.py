@@ -37,3 +37,11 @@ def calculate_decrease(stitches_per_row):
     return decrease_between_rows
 
 print(find_width(-.2723, 7.5, 1, 7))
+
+def put_it_all_together(upper_arm_circ, arm_hole_depth, stitch_height, rows, stitch_width,):
+    parabola_slope = calculate_parabola_slope(upper_arm_circ, arm_hole_depth)
+    row_widths = find_width(parabola_slope, arm_hole_depth, stitch_height, rows)
+    stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
+    decreases = calculate_decrease(stitches_per_row)
+
+    return decreases
