@@ -40,7 +40,7 @@ def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitc
     }
 
     while tracking_data['row_counter'] < rows:
-        if (tracking_data['row_counter']) >= rows or (tracking_data['row_counter'] + rows_between) >= rows:
+        if (tracking_data['row_counter'] + rows_between) >= rows:
             final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
             print_rows(tracking_data, final_rows_between, stitch, i_d)
             break
