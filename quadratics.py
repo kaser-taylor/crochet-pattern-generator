@@ -16,8 +16,8 @@ def find_x(a, arm_hole_depth, stitch_height):
 
 def find_width(a, arm_hole_depth, stitch_height, rows):
     row_widths = {}
-    for i in range(rows + 1):
-        row_widths[f'row {i + 1}'] = round(find_x(a, arm_hole_depth, stitch_height * i), 4) * 2
+    for i in range(rows):
+        row_widths[f'row {i}'] = round(find_x(a, arm_hole_depth, stitch_height * i), 4) * 2
     
     return row_widths
 
@@ -35,8 +35,6 @@ def calculate_decrease(stitches_per_row):
         decrease_between_rows[f'row {i} - {i+1}'] = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
 
     return decrease_between_rows
-
-print(find_width(-.2723, 7.5, 1, 7))
 
 def put_it_all_together(upper_arm_circ, arm_hole_depth, stitch_height, rows, stitch_width,):
     parabola_slope = calculate_parabola_slope(upper_arm_circ, arm_hole_depth)
