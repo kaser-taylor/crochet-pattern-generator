@@ -63,11 +63,6 @@ def print_sleeve_cap(tracking_data, decrease_data, rows):
     #     'stitch_count'
     # }
 
-
-    for row in decrease_data:
-        print(f'Row {cap_tracker['row_counter']}')
-        cap_tracker['row_counter'] += 1
-
 def calculate_total_stitch_together(decrease):
     decrease_data = {
         'front_decrease': 0,
