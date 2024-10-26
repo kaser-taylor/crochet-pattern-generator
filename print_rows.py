@@ -54,7 +54,7 @@ def row_tracker(rows, num_increases, rows_between, stitch, i_d='i', stitch_count
     return tracking_data
 
 
-def print_sleeve_cap(tracking_data, decrease_data, rows):
+def print_sleeve_cap(tracking_data, decrease_data, stitch):
     cap_tracker = tracking_data
     # {
     #     'row_counter'
@@ -63,22 +63,33 @@ def print_sleeve_cap(tracking_data, decrease_data, rows):
     #     'stitch_count'
     # }
 
-def calculate_total_stitch_together(decrease):
+    for row, value in decrease_data.items():
+        f_b = calculate_f_and_b_dec(value)
+        cap_tracker['row_counter'] += 1
+        cap_tracker['stitch_count'] -= f_b['front_decrease']
+        print(f'Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {cap_tracker['stitch_count']} dec{f_b['back_decrease']}')
+        cap_tracker['stitch_count'] -= f_b['back_decrease']
+        
+    
+
+def calculate_f_and_b_dec(decrease):
     decrease_data = {
         'front_decrease': 0,
         'back_decrease': 0
     }
 
-    total_stitches = 2 * decrease
+    total_stitches = decrease
 
-    while total_stitches >= 0:
+    while total_stitches < 0:
         if total_stitches % 2 == 0:
             decrease_data['front_decrease'] += 1
             
         else:
             decrease_data['back_decrease'] += 1
         
-        total_stitches -= 1
+        total_stitches += 1
+    
+    return decrease_data
         
         
 

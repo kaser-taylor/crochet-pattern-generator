@@ -75,17 +75,20 @@ class test_quadratics(unittest.TestCase):
         for row in expected_values:
          self.assertEqual(actual_values, expected_values)
 
-# class test_print_rows(unittest.TestCase):
-#     def test_calculate_total_stitch_together(self):
-#         expected_values = {
-#             'front_decrease': 5,
-#             'back_decrease': 6
-#         }
+class test_print_rows(unittest.TestCase):
+    def calculate_left_and_right_dec(self):
+        expected_values = {
+            'front_decrease': 5,
+            'back_decrease': 6
+        }
 
-#         actual_values = print_rows.calculate_total_stitch_together(11)
+        actual_values = print_rows.calculate_total_stitch_together(11)
 
-#         for row in expected_values:
-#             self.assertEqual(actual_values, expected_values)
+        for row in expected_values:
+            self.assertEqual(actual_values, expected_values)
+    
+        
+        
 
 if __name__ == '__main__':
     unittest.main()

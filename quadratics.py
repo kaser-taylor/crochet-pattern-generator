@@ -43,3 +43,5 @@ def put_it_all_together(upper_arm_circ, arm_hole_depth, stitch_height, rows, sti
     decreases = calculate_decrease(stitches_per_row)
 
     return decreases
+
+print(put_it_all_together(10, 10, 1, 10, .5))
