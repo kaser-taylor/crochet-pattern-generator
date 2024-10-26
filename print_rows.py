@@ -67,8 +67,11 @@ def print_sleeve_cap(tracking_data, decrease_data, stitch):
         f_b = calculate_f_and_b_dec(value)
         cap_tracker['row_counter'] += 1
         cap_tracker['stitch_count'] -= f_b['front_decrease']
-        print(f'Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {cap_tracker['stitch_count']} dec{f_b['back_decrease']}')
-        cap_tracker['stitch_count'] -= f_b['back_decrease']
+        if f_b['front_decrease'] == 0:
+            print(f'Row {cap_tracker['row_counter']} in the next {cap_tracker['stitch_count']} dec{f_b['back_decrease']}')
+        else:
+            print(f'Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {cap_tracker['stitch_count']} dec{f_b['back_decrease']}')
+            cap_tracker['stitch_count'] -= f_b['back_decrease']
         
     
 
