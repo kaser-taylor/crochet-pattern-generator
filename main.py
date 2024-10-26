@@ -46,7 +46,7 @@ def main():
     sleeve_cap_first_row_data = first_row.print_first_row_new_section(print_sleeve_data['row_counter'], swatch_data['stitch_type'])
 
     #prints sleeve cap
-    sleeve_cap = print_rows.print_sleeve_cap(print_sleeve_data, decreases, swatch_data['stitch_type'])
+    sleeve_cap = print_rows.print_sleeve_cap(print_sleeve_data, decreases, swatch_data['stitch_type'], sleeve_data['calculated_sleeve_stitches_at_top'])
     #test commit after making private
 if __name__ == '__main__':
     main()
