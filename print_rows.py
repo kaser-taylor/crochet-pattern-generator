@@ -66,10 +66,15 @@ def print_sleeve_cap(tracking_data, decrease_data, stitch, stitch_count):
     for row, value in decrease_data.items():
         f_b = calculate_f_and_b_dec(value)
         cap_tracker['row_counter'] += 1
-        stitch_count -= f_b['front_decrease']
-        if f_b['front_decrease'] == 0:
+        if stitch_count <= 0:
+            break
+        elif f_b['front_decrease'] == 0:
+            stitch_count -= f_b['back_decrease']
             print(f"Row {cap_tracker['row_counter']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
+            stitch_count -= f_b['back_decrease']
         else:
+            stitch_count -= f_b['front_decrease']
+            stitch_count -= f_b['back_decrease']
             print(f"Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
             stitch_count -= f_b['back_decrease']
         
