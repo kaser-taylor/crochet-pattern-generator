@@ -16,7 +16,7 @@ def print_rows (tracked_data, rows_between, stitch, i_d):
             tracked_data['row_counter'] += (rows_between)
             tracked_data['increase'] = True
     else:
-        if i_d == 'increase':
+        if i_d == 'i':
             tracked_data['row_counter'] += 1
             print_increase(tracked_data['row_counter'], stitch)
             tracked_data['row_counter'] += 1
@@ -31,7 +31,7 @@ def print_rows (tracked_data, rows_between, stitch, i_d):
             tracked_data['stitch_count'] -= 2
 
 # This handles the while loop for printing the right amount of rows 
-def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitch_count=0, row_counter=2):
+def row_tracker(rows, num_increases, rows_between, stitch, i_d='i', stitch_count=0, row_counter=2):
     tracking_data = {
         'row_counter': row_counter,
         'increase': False,
@@ -40,7 +40,7 @@ def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitc
     }
 
     while tracking_data['row_counter'] < rows:
-        if (tracking_data['row_counter']) >= rows or (tracking_data['row_counter'] + rows_between) >= rows:
+        if (tracking_data['row_counter'] + rows_between) >= rows:
             final_rows_between = int((rows - tracking_data['row_counter']) / (num_increases - tracking_data['increase_counter']))
             print_rows(tracking_data, final_rows_between, stitch, i_d)
             break
@@ -52,6 +52,59 @@ def row_tracker(rows, num_increases, rows_between, stitch, i_d='increase', stitc
         print_rows(tracking_data, rows_between, stitch, i_d)
     
     return tracking_data
+
+
+def print_sleeve_cap(tracking_data, decrease_data, stitch, stitch_count):
+    cap_tracker = tracking_data
+    # {
+    #     'row_counter'
+    #     'increase'
+    #     'increase_counter'
+    #     'stitch_count'
+    # }
+
+    for row, value in decrease_data.items():
+        f_b = calculate_f_and_b_dec(value)
+        cap_tracker['row_counter'] += 1
+        if stitch_count <= 0:
+            break
+        elif f_b['front_decrease'] == 0:
+            stitch_count -= f_b['back_decrease'] * 2
+            print(f"Row {cap_tracker['row_counter']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
+            stitch_count += 1
+            # stitch_count -= f_b['back_decrease']
+        else:
+            stitch_count -= f_b['front_decrease'] * 2
+            stitch_count -= f_b['back_decrease'] * 2
+            print(f"Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
+            stitch_count += 2
+            # stitch_count -= f_b['back_decrease']
+
+
+        
+    
+
+def calculate_f_and_b_dec(decrease):
+    decrease_data = {
+        'front_decrease': 0,
+        'back_decrease': 0
+    }
+
+    total_stitches = decrease
+
+    while total_stitches < 0:
+        if total_stitches % 2 == 0:
+            decrease_data['front_decrease'] += 1
+            
+        else:
+            decrease_data['back_decrease'] += 1
+        
+        total_stitches += 1
+    
+    return decrease_data
+        
+        
+
 
 
 #OLD CODE
