@@ -100,5 +100,6 @@ def get_swatch_data():
     swatch_data['stitch_height'] = calc_stitch_height(swatch_data['swatch_height'], swatch_data['vertical_stitches'])
     swatch_data['stitch_gauge'] = calc_stitch_gauge(swatch_data['swatch_width'], swatch_data['swatch_height'], swatch_data['vertical_stitches'], swatch_data['horizontal_stitches'])
 
+
     return swatch_data
 

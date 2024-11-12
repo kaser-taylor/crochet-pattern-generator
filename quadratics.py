@@ -25,7 +25,7 @@ def calculate_stitches_per_row(row_widths, stitch_width):
     stitches_per_row = {}
     for row in row_widths:
         stitches_per_row[f'{row}'] = int(row_widths[row] / stitch_width)
-    
+        
     return stitches_per_row
 
 def calculate_decrease(stitches_per_row):

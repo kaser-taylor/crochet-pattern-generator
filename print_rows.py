@@ -69,14 +69,18 @@ def print_sleeve_cap(tracking_data, decrease_data, stitch, stitch_count):
         if stitch_count <= 0:
             break
         elif f_b['front_decrease'] == 0:
-            stitch_count -= f_b['back_decrease']
+            stitch_count -= f_b['back_decrease'] * 2
             print(f"Row {cap_tracker['row_counter']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
-            stitch_count -= f_b['back_decrease']
+            stitch_count += 1
+            # stitch_count -= f_b['back_decrease']
         else:
-            stitch_count -= f_b['front_decrease']
-            stitch_count -= f_b['back_decrease']
+            stitch_count -= f_b['front_decrease'] * 2
+            stitch_count -= f_b['back_decrease'] * 2
             print(f"Row {cap_tracker['row_counter']} dec {f_b['front_decrease']} {stitch} in the next {stitch_count} dec{f_b['back_decrease']}")
-            stitch_count -= f_b['back_decrease']
+            stitch_count += 2
+            # stitch_count -= f_b['back_decrease']
+
+
         
     
 
