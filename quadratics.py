@@ -33,7 +33,7 @@ def find_width_vertical(a, c, stitch_height, rows):
 
 def find_width_horizontal(a, x, c, stitch_height, rows, m1, i_d):
     row_widths = {}
-    if i_d == 'i'
+    if i_d == 'i':
         for i in range(rows):
             x = i * stitch_height
             row_widths[f'row {i}'] = round(m1 - (find_y(a, x, c) * 2))
