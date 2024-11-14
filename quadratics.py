@@ -14,7 +14,7 @@ def find_x(a, c, y):
     x = round(math.sqrt((y - c) / a), 4)
     return x
 
-def find_c_with_tw0_measurements(m1, m2):
+def find_c_with_two_measurements(m1, m2):
     c = (m1 / 2) - (m2 / 2)
 
     return c
@@ -49,20 +49,22 @@ def calculate_stitches_per_row(row_widths, stitch_width):
         
     return stitches_per_row
 
-def calculate_decrease(stitches_per_row):
-    decrease_between_rows = {}
+def calculate_id_rows(stitches_per_row):
+    id_between_rows = {}
 
     for i in range(len(stitches_per_row) - 1):
-        decrease_between_rows[f'row {i} - {i+1}'] = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
+        id_between_rows[f'row {i} - {i+1}'] = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
 
-    return decrease_between_rows
+    return id_between_rows
 
-def put_it_all_together(upper_arm_circ, arm_hole_depth, stitch_height, rows, stitch_width,):
+def put_it_all_together_vertical(upper_arm_circ, arm_hole_depth, stitch_height, rows, stitch_width):
     parabola_slope = calculate_parabola_slope(upper_arm_circ, arm_hole_depth)
     row_widths = find_width_vertical(parabola_slope, arm_hole_depth, stitch_height, rows)
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
-    decreases = calculate_decrease(stitches_per_row)
+    decreases = calculate_id_rows(stitches_per_row)
 
     return decreases
 
-print(put_it_all_together(10, 10, 1, 10, .5))
+def put_it_all_together_vertical(m1, m2, x):
+    c = find_c_with_two_measurements(m1, m2)
+    a = calculate_parabola_slope(x, c)
