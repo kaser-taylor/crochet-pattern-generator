@@ -10,8 +10,12 @@ def calculate_parabola_slope(x, c):
 
     return slope
 
-def find_x(a, c, y):
+def find_x_vertical(a, c, y):
     x = round(math.sqrt((y - c) / a), 4)
+    return x
+
+def find_x_horizontal(rows, stitch_height):
+    x = rows * stitch_height
     return x
 
 def find_c_with_two_measurements(m1, m2):
@@ -27,17 +31,19 @@ def find_y(a, x, c):
 def find_width_vertical(a, c, stitch_height, rows):
     row_widths = {}
     for i in range(rows):
-        row_widths[f'row {i}'] = round(find_x(a, c, stitch_height * i), 4) * 2
+        row_widths[f'row {i}'] = round(find_x_vertical(a, c, stitch_height * i), 4) * 2
     
     return row_widths
 
-def find_width_horizontal(a, x, c, stitch_height, rows, m1, i_d):
+def find_width_horizontal(a, c, stitch_height, rows, m1, i_d):
     row_widths = {}
     if i_d == 'i':
+        x = rows * stitch_height
         for i in range(rows):
-            x = i * stitch_height
+            x -= stitch_height
             row_widths[f'row {i}'] = round(m1 - (find_y(a, x, c) * 2))
     else:
+        x = 0
         for i in range(rows):
             x += stitch_height
             row_widths[f'row {i}'] = round(m1 - (find_y(a, x, c) * 2))
@@ -68,3 +74,4 @@ def put_it_all_together_vertical(upper_arm_circ, arm_hole_depth, stitch_height, 
 def put_it_all_together_vertical(m1, m2, x):
     c = find_c_with_two_measurements(m1, m2)
     a = calculate_parabola_slope(x, c)
+    row_widths = find_width_horizontal()
