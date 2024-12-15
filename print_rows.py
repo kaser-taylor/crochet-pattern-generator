@@ -1,4 +1,4 @@
-    
+import math
 def print_regular_repeat(row_counter, rows_between, stitch):
     print(f'Row {row_counter} - {row_counter + rows_between} {stitch}')
 
@@ -103,8 +103,43 @@ def calculate_f_and_b_dec(decrease):
     
     return decrease_data
         
-        
+def compile_bodice_section_data(measurements, swatch_data):
+  bodice_data = {
+      'section_heights': [measurements['hip to waist'], measurements['waist to bust'], measurements['bust to neckline']]
+      ''
+  }
 
+def print_bodice_section(stitches_per_row, stitch, row_count):
+    for i in range(len(stitches_per_row - 1)):
+        row_count += 1
+        i_d = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
+        if i_d == 0:
+            print(f'Row {row_count} {stitch} in the next {stitches_per_row[f'row{i}']}')
+        elif i_d == -1:
+            print(f'Row {row_count} dec 1 {stitch} in the next {stitches_per_row - 1}')
+        elif i_d == 1:
+            print(f'Row {row_count} inc 1 {stitch} in the next {stitches_per_row - 1}')
+        elif i_d > 1:
+            print(f'Row {row_count} inc {math.floor(i_d / 2)} {stitch} in the next {stitches_per_row - math.floor(i_d / 2)} inc {math.ceil(i_d / 2)}')
+        else:
+            print(f'Row {row_count} dec {math.floor(abs(i_d / 2))} in the next {stitches_per_row - math.floor(abs(i_d / 2))} dec {math.ceil(i_d / 2)}')
+
+def calculate_f_and_b_inc(increase):
+    increase_data = {
+        'front_increase': 0,
+        'back_decrease': 0
+    }
+
+    total_stitches = increase
+
+    while total_stitches > 0:
+        if total_stitches % 2 == 0:
+            increase_data['front_increase'] += 1
+            
+        else:
+            increase_data['back_increase'] += 1
+        
+            total_stitches -= 1
 
 
 #OLD CODE

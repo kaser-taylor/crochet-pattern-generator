@@ -28,7 +28,7 @@ def define_sleeve_variables(swatch_data, measurements):
     return sleeve_variables
 
 def define_front_bodice_variables(swatch_data, measurements):
-    bodice_variables = {}
+    bodice_variables = {} 
 
     bodice_variables['hip_to_waist_rows'] = measurements['hip to waist'] / swatch_data['stitch_height']
     bodice_variables['waist_to_bust_rows'] = measurements['waist to bust'] / swatch_data['stitch_height']

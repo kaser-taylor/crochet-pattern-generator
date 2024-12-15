@@ -37,7 +37,8 @@ def find_width_vertical(a, c, stitch_height, rows):
 
 def find_width_horizontal(a, c, stitch_height, rows, m1, i_d):
     row_widths = {}
-    if i_d == 'i':
+    # i == true d == false
+    if i_d == True:
         x = rows * stitch_height
         for i in range(rows):
             x -= stitch_height
@@ -60,8 +61,6 @@ def calculate_stitches_per_row(row_widths, stitch_width):
 def calculate_id_rows(stitches_per_row):
     id_between_rows = {}
 
-    # remember if - then an increase if + then a decrease
-
     for i in range(len(stitches_per_row) - 1):
         id_between_rows[f'row {i} - {i+1}'] = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
 
@@ -82,4 +81,4 @@ def put_it_all_together_vertical(m1, m2, x, stitch_height, rows, i_d, stitch_wid
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
     i_d = calculate_id_rows(stitches_per_row)
 
-    return id
+    return (i_d, stitches_per_row)
