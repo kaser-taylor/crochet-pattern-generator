@@ -10,6 +10,7 @@ def calculate_parabola_slope(x, c):
 
     return slope
 
+
 def find_x_vertical(a, c, y):
     x = round(math.sqrt((y - c) / a), 4)
     return x
@@ -19,7 +20,7 @@ def find_x_horizontal(rows, stitch_height):
     return x
 
 def find_c_with_two_measurements(m1, m2):
-    c = (m1 / 2) - (m2 / 2)
+    c = abs((m1 / 2) - (m2 / 2))
 
     return c
 
@@ -79,6 +80,5 @@ def put_it_all_together_vertical(m1, m2, x, stitch_height, rows, i_d, stitch_wid
     a = calculate_parabola_slope(x, c)
     row_widths = find_width_horizontal(a, c, stitch_height, rows, m1, i_d)
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
-    i_d = calculate_id_rows(stitches_per_row)
 
-    return (i_d, stitches_per_row)
+    return (stitches_per_row)

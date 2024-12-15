@@ -1,5 +1,6 @@
 s = {
     'bust': 35,
+    'high chest': 31.5,
     'body length': 23,
     'sleeve length': 22,
     'shoulder width': 14.5,
@@ -16,6 +17,7 @@ s = {
 
 m = {
     'bust': 39,
+    'high chest': 34.5,
     'body length': 24,
     'sleeve length': 23,
     'shoulder width': 15.5,
@@ -32,6 +34,7 @@ m = {
 
 l = {
     'bust': 43,
+    'high chest': 37.5,
     'body length': 25,
     'sleeve length': 24,
     'shoulder width': 16.5,
@@ -48,6 +51,7 @@ l = {
 
 xl = {
     'bust': 47,
+    'high chest': 44.6,
     'body length': 26,
     'sleeve length': 25,
     'shoulder width': 17.5,
@@ -64,6 +68,7 @@ xl = {
 
 xxl = {
     'bust': 51,
+    'high chest': 48.5,
     'body length': 27,
     'sleeve length': 26,
     'shoulder width': 18.5,

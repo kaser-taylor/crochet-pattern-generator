@@ -1,4 +1,5 @@
 import math
+import quadratics
 def print_regular_repeat(row_counter, rows_between, stitch):
     print(f'Row {row_counter} - {row_counter + rows_between} {stitch}')
 
@@ -103,13 +104,28 @@ def calculate_f_and_b_dec(decrease):
     
     return decrease_data
         
-def compile_bodice_section_data(measurements, swatch_data):
+def compile_bodice_section_data(measurements):
   bodice_data = {
-      'section_heights': [measurements['hip to waist'], measurements['waist to bust'], measurements['bust to neckline']]
-      ''
+      'section_heights': [measurements['hip to waist'], measurements['waist to bust'], measurements['bust to neckline']],
+      'bodice_widths': [measurements['hip'], measurements['waist'], measurements['bust'], measurements['high chest']]
   }
+  return bodice_data
 
-def print_bodice_section(stitches_per_row, stitch, row_count):
+def print_all_sections(measurements, swatch_data):
+    m1 = 0
+    m2 = 0
+    x = 0
+    stitch_height = swatch_data['stitch_height']
+    stitch_width = swatch_data['stitch_width']
+    rows = 0
+    for i in range(3):
+        m1 = measurements['bodice_widths'][i]
+        m2 = measurements['bodice_widths'][i+1]
+        x = measurements['section_heights'][i]
+        quadratics.put_it_all_together_vertical(m1, m2, x, stitch_height, rows, stitch_width)
+
+        
+def print_section(stitches_per_row, stitch, row_count):
     for i in range(len(stitches_per_row - 1)):
         row_count += 1
         i_d = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
