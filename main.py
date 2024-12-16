@@ -39,7 +39,7 @@ def main():
     print_sleeve_data = print_rows.row_tracker(sleeve_data['sleeve_rows'], sleeve_data['sleeve_total_num_increases'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
 
     #gets sleeve cap decreases
-    decreases = quadratics.put_it_all_together(processed_measurements['upper arm circ'], processed_measurements['arm hole depth'], swatch_data['stitch_height'], sleeve_data['sleeve_cap_rows'], swatch_data['stitch_width'])
+    decreases = quadratics.put_it_all_together_vertical(processed_measurements['upper arm circ'], processed_measurements['arm hole depth'], swatch_data['stitch_height'], sleeve_data['sleeve_cap_rows'], swatch_data['stitch_width'])
     print(decreases)
 
     #prints first row of sleeve cap
@@ -48,5 +48,16 @@ def main():
     #prints sleeve cap
     sleeve_cap = print_rows.print_sleeve_cap(print_sleeve_data, decreases, swatch_data['stitch_type'], sleeve_data['calculated_sleeve_stitches_at_top'])
     #test commit after making private
+
+    #gathers bodice data
+    bodice_data = print_rows.compile_bodice_section_data(processed_measurements)
+
+    #prints first bodice row
+    #first_row.print_first_bodice_ch(bodice_data)
+    
+    #prints bodice
+    last_row_count = print_rows.print_all_sections(bodice_data, swatch_data)
+
+    #
 if __name__ == '__main__':
     main()

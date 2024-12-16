@@ -56,7 +56,7 @@ def calculate_stitches_per_row(row_widths, stitch_width):
     stitches_per_row = {}
     for row in row_widths:
         stitches_per_row[f'{row}'] = int(row_widths[row] / stitch_width)
-        
+    print(stitches_per_row)    
     return stitches_per_row
 
 def calculate_id_rows(stitches_per_row):
@@ -75,7 +75,7 @@ def put_it_all_together_vertical(upper_arm_circ, arm_hole_depth, stitch_height, 
 
     return decreases
 
-def put_it_all_together_vertical(m1, m2, x, stitch_height, rows, i_d, stitch_width):
+def put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d):
     c = find_c_with_two_measurements(m1, m2)
     a = calculate_parabola_slope(x, c)
     row_widths = find_width_horizontal(a, c, stitch_height, rows, m1, i_d)

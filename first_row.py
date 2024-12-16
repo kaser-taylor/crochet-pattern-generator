@@ -28,3 +28,6 @@ def print_first_row(length, stitch_type, stitch_gauge):
 def print_first_row_new_section(row, stitch_type):
     print(f'Row {row}: {stitch_type}')
     return row
+
+def print_first_bodice_ch(stitches_per_row):
+    print(f'Foundation ch {stitches_per_row["row 0"]}')
