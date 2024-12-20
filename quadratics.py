@@ -67,13 +67,13 @@ def calculate_id_rows(stitches_per_row):
 
     return id_between_rows
 
-def put_it_all_together_vertical(upper_arm_circ, arm_hole_depth, stitch_height, rows, stitch_width):
-    parabola_slope = calculate_parabola_slope(upper_arm_circ, arm_hole_depth)
-    row_widths = find_width_vertical(parabola_slope, arm_hole_depth, stitch_height, rows)
+def put_it_all_together_vertical(x, y, stitch_height, rows, stitch_width):
+    parabola_slope = calculate_parabola_slope(x, y)
+    row_widths = find_width_vertical(parabola_slope, y, stitch_height, rows)
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
-    decreases = calculate_id_rows(stitches_per_row)
+    i_d = calculate_id_rows(stitches_per_row)
 
-    return decreases
+    return i_d
 
 def put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d):
     c = find_c_with_two_measurements(m1, m2)
