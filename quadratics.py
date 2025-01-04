@@ -36,16 +36,14 @@ def find_width_vertical(a, c, stitch_height, rows):
     
     return row_widths
 
-def find_width_horizontal(a, c, stitch_height, rows, m1, i_d):
+def find_width_horizontal(a, c, stitch_height, rows, m1, x, i_d):
     row_widths = {}
     # i == true d == false
     if i_d == True:
-        x = rows * stitch_height
         for i in range(rows):
             x -= stitch_height
             row_widths[f'row {i}'] = round(m1 - (find_y(a, x, c) * 2))
     else:
-        x = 0
         for i in range(rows):
             x += stitch_height
             row_widths[f'row {i}'] = round(m1 - (find_y(a, x, c) * 2))
@@ -78,7 +76,7 @@ def put_it_all_together_vertical(x, y, stitch_height, rows, stitch_width):
 def put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d):
     c = find_c_with_two_measurements(m1, m2)
     a = calculate_parabola_slope(x, c)
-    row_widths = find_width_horizontal(a, c, stitch_height, rows, m1, i_d)
+    row_widths = find_width_horizontal(a, c, stitch_height, rows, m1, x, i_d)
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)
 
     return (stitches_per_row)

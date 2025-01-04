@@ -138,7 +138,9 @@ def print_all_sections(measurements, swatch_data):
     last_row = 0
     for i in range(3):
         m1 = measurements['bodice_widths'][i]
+        print(m1)
         m2 = measurements['bodice_widths'][i+1]
+        print(m2)
         x = measurements['section_heights'][i]
         rows = int(x // stitch_height)
         stitches = quadratics.put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d)
@@ -146,12 +148,12 @@ def print_all_sections(measurements, swatch_data):
         if i == 0:
             print(f'Foundation ch {stitches["row 0"]}')
         print_section(stitches, swatch_data['stitch_type'], row_count)
-        if i % 2 == 0:
+        if m2 - m1 > 0:
             i_d = True
         else:
             i_d = False
         if i == 2:
-            last_row = stitches[f'row {row_count[0]}']
+            last_row = stitches.popitem()
     return last_row
 
 def calculate_f_and_b_inc(increase):
