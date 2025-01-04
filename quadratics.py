@@ -19,9 +19,18 @@ def find_x_horizontal(rows, stitch_height):
     x = rows * stitch_height
     return x
 
-def find_c_with_two_measurements(m1, m2):
-    c = abs((m1 / 2) - (m2 / 2))
+# def find_c_with_two_measurements(m1, m2):
+#     c = abs((m1 / 2) - (m2 / 2))
 
+#     return c
+
+def find_c(m1, m2,  i_d):
+    c = 0
+    if i_d == True:
+        c = (m2 - m1) / 2
+    else:
+        c = (m1 - m2) / 2
+    
     return c
 
 def find_y(a, x, c):
@@ -74,7 +83,7 @@ def put_it_all_together_vertical(x, y, stitch_height, rows, stitch_width):
     return i_d
 
 def put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d):
-    c = find_c_with_two_measurements(m1, m2)
+    c = find_c(m1, m2, i_d)
     a = calculate_parabola_slope(x, c)
     row_widths = find_width_horizontal(a, c, stitch_height, rows, m1, x, i_d)
     stitches_per_row = calculate_stitches_per_row(row_widths, stitch_width)

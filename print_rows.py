@@ -143,15 +143,15 @@ def print_all_sections(measurements, swatch_data):
         print(m2)
         x = measurements['section_heights'][i]
         rows = int(x // stitch_height)
+        if i % 2 == 0:
+            i_d = False
+        else:
+            i_d = True
         stitches = quadratics.put_it_all_together_horizontal(m1, m2, x, stitch_height, rows, stitch_width, i_d)
         print(stitches)
         if i == 0:
             print(f'Foundation ch {stitches["row 0"]}')
         print_section(stitches, swatch_data['stitch_type'], row_count)
-        if m2 - m1 > 0:
-            i_d = True
-        else:
-            i_d = False
         if i == 2:
             last_row = stitches.popitem()
     return last_row

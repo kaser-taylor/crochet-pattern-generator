@@ -25,7 +25,7 @@ def main():
 
     #gets swatch data from user and calculates data from that
     swatch_data = stitch_swatch_data.get_swatch_data()
-
+    print(swatch_data)
     #sleeve_data
     sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data, processed_measurements)
     print(sleeve_data)
@@ -51,6 +51,7 @@ def main():
 
     #gathers bodice data
     bodice_data = print_rows.compile_bodice_section_data(processed_measurements)
+    
 
     #prints first bodice row
     #first_row.print_first_bodice_ch(bodice_data)
