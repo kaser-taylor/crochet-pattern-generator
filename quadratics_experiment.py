@@ -18,9 +18,21 @@ def find_a_dec(c, length):
 
     return a
 
-def find_width_inc(a, length, i, stitch_height, c):
-    length = (length) + (i * stitch_height)
-    y = a * (-(length ** 2)) + c
+def find_y_inc(a, length, i, stitch_height, c):
+    length = length + (i * stitch_height)
+    y = (a * (-(length ** 2))) + c
 
     return y
+
+def find_y_dec(a, length, i, stitch_height, c):
+    length = 0 + (i * stitch_height)
+    y = (a * (length ** 2)) + c
+
+    return y
+
+def find_rows(length, stitch_height):
+    rows = length / stitch_height
+
+    return rows
+
 
