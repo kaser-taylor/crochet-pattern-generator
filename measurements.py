@@ -1,3 +1,4 @@
+# need to change these to data classes for easier readability
 s = {
     'bust': 35,
     'high chest': 31.5,
@@ -89,12 +90,13 @@ baggy_factor = {
     'tight': 2,
 }
 
-#gets the measurements of the project 
+#gets the measurements of the project just used for user input. will be replaced with form arguments in the future 
 def get_size():
     user_size = input('Please input your size: S M L XL XXL ').strip().lower()
 
     return user_size
 
+# prints the preset measurements for the size the user inputs 
 def get_measurements(size):
     if size == 's':
         print(s)
@@ -114,12 +116,14 @@ def get_measurements(size):
     else:
         return('Sizing option not available')
 
+#gathers user input on how baggy they want and sets the ease measurement to what the dictionary says. the dictionary later just adds that number to every measurement
 def define_baggy_factor():
     user_input = input(f'What would you like the fit of your sweater to be? Casual, Oversized, Tight ').strip().lower()
     ease = baggy_factor[user_input]
 
     return ease
 
+#gathers user input on if they want to keep their measurements, and what their swatch is like. This will be replaced by form input
 def user_adjustments(user_measurements):
     final_measurements = user_measurements
     y_or_n = input('Would you like to make measurement adjustments? y or n ').strip().lower()
@@ -144,7 +148,7 @@ def user_adjustments(user_measurements):
     else:
         return('Invalid response')
 
-
+# adds the ease to the final measurement. 
 def processed_measurements(final_measurements, ease):
     for measurement in final_measurements:
         final_measurements[measurement] += ease

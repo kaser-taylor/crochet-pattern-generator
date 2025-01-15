@@ -1,5 +1,7 @@
 import math
 import quadratics
+import quadratics_experiment
+
 def print_regular_repeat(row_counter, rows_between, stitch):
     print(f'Row {row_counter} - {row_counter + rows_between} {stitch}')
 
@@ -104,12 +106,6 @@ def calculate_f_and_b_dec(decrease):
     
     return decrease_data
         
-def compile_bodice_section_data(measurements):
-  bodice_data = {
-      'section_heights': [measurements['hip to waist'], measurements['waist to bust'], measurements['bust to neckline']],
-      'bodice_widths': [measurements['hip'], measurements['waist'], measurements['bust'], measurements['high chest']]
-  }
-  return bodice_data
 def print_section(stitches_per_row, stitch, row_count):
     for i in range(len(stitches_per_row) - 1):
         i_d = stitches_per_row[f'row {i + 1}'] - stitches_per_row[f'row {i}']
@@ -173,6 +169,33 @@ def calculate_f_and_b_inc(increase):
         
             total_stitches -= 1
 
+
+def compile_bodice_section_data(measurements):
+  bodice_data = {
+      'section_heights': [measurements['hip to waist'], measurements['waist to bust'], measurements['bust to neckline']],
+      'bodice_widths': [measurements['hip'], measurements['waist'], measurements['bust'], measurements['high chest']]
+  }
+  return bodice_data
+
+
+
+def print_sections(bodice_measurements, swatch_data):
+   for i in range(3):
+        row = []
+        if bodice_measurements['bodice_widths'][i] > bodice_measurements['bodice_widths'][i + 1]:
+            c = quadratics_experiment.find_c_dec(bodice_measurements['bodice_widths'][i], bodice_measurements['bodice_widths'][i + 1])
+            a = quadratics_experiment.find_a_dec(c, bodice_measurements['section_heights'][i])
+            rows = quadratics_experiment.find_rows(bodice_measurements['section_heights'][i], swatch_data['stitch_height'])
+            
+
+           
+        elif bodice_measurements['bodice_widths'][i] < bodice_measurements['bodice_widths'][i + 1]:
+
+        else:
+
+# def print_row(row):
+
+#     print(f'Row: {row} ')
 
 #OLD CODE
 
