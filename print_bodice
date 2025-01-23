@@ -1,0 +1,54 @@
+import math
+
+def body_piece_length(body_length):
+    bpl = body_length - 2
+    
+    return bpl
+
+def bodice_rows(body_piece_length, stitch_height):
+    rows = body_piece_length // stitch_height
+
+    return rows
+
+def stitches_per_row(widest_measure, stitch_width):
+    spr = widest_measure // stitch_width
+
+    return spr
+
+def print_body_piece(rows, stitches_per_row, stitch):
+    print(f'For {rows} rows, {stitch} {stitches_per_row}')
+    print(f'Slip stitch and tie off row')
+
+def print_neckline_statement():
+    print(f'After finishing the body piece start on one end of the sweater for the neckline')
+
+def neckline_rows(stitch_height):
+    rows = 2 / stitch_height
+
+    return rows
+
+def find_x(stitch_height, rows):
+    x_values = []
+    for i in range(rows):
+        x = math.sqrt(((i + 1) * stitch_height) / .1)
+        x_values[i] = x
+
+def find_widths(x_values, base_width):
+    widths = []
+    curr_width = base_width
+    for x in x_values:
+        curr_width = curr_width - x
+        widths.append(curr_width)
+
+def find_stitches_per_row_neckline(widths, stitch_width):
+    spr = []
+    for width in widths:
+        spr.append(width // stitch_width)
+
+def calculate_dec_neckline(spr, base_stitches):
+    dec = []
+    curr_stitches = base_stitches
+    for row in spr:
+        dec.append(curr_stitches - row)
+        curr_stitches = curr_stitches - row
+
