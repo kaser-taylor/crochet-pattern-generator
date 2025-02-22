@@ -50,14 +50,14 @@ def main():
     #test commit after making private
 
     #gathers bodice data
-    bodice_data = print_rows.compile_bodice_section_data(processed_measurements)
+    # bodice_data = print_rows.compile_bodice_section_data(processed_measurements)
     
 
     #prints first bodice row
     #first_row.print_first_bodice_ch(bodice_data)
     
     #prints bodice
-    last_row_count = print_rows.print_all_sections(bodice_data, swatch_data)
+    # last_row_count = print_rows.print_all_sections(bodice_data, swatch_data)
 
     #
 if __name__ == '__main__':

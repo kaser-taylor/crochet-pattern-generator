@@ -37,8 +37,9 @@ def find_widths(x_values, base_width):
     widths = []
     curr_width = base_width
     for x in x_values:
-        curr_width = curr_width - x
+        curr_width = curr_width - 2 * x
         widths.append(curr_width)
+    return widths
 
 def find_stitches_per_row_neckline(widths, stitch_width):
     spr = []
@@ -52,3 +53,18 @@ def calculate_dec_neckline(spr, base_stitches):
         dec.append(curr_stitches - row)
         curr_stitches = curr_stitches - row
 
+def print_neckline(decreases, base_stitches, stitch_type):
+    stitch_count = base_stitches
+    f_b = True
+    for dec in decreases:
+        if f_b == True:
+            print(f'{stitch_type} {stitch_count - 2 * dec} dec {dec}')
+            stitch_count -= dec
+            f_b = False
+        else:
+            print(f'dec{dec} {stitch_type} in the next {stitch_count - 2 * dec}')
+            stitch_count -= dec
+            f_b = True
+        
+def print_body():
+    
