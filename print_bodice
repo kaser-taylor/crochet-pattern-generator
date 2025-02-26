@@ -10,6 +10,12 @@ def bodice_rows(body_piece_length, stitch_height):
 
     return rows
 
+def find_widest(length_dict):
+    widest = 0
+    for value in length_dict.values():
+        if value > widest:
+            widest = value
+
 def stitches_per_row(widest_measure, stitch_width):
     spr = widest_measure // stitch_width
 
@@ -46,9 +52,8 @@ def find_stitches_per_row_neckline(widths, stitch_width):
     for width in widths:
         spr.append(width // stitch_width)
 
-def calculate_dec_neckline(spr, base_stitches):
+def calculate_dec_neckline(spr):
     dec = []
-    curr_stitches = base_stitches
     for row in spr:
         dec.append(curr_stitches - row)
         curr_stitches = curr_stitches - row
@@ -66,5 +71,18 @@ def print_neckline(decreases, base_stitches, stitch_type):
             stitch_count -= dec
             f_b = True
         
-def print_body():
-    
+def print_body(body_length, stitch_height, body_widths, stitch_width, stitch):
+    length_body_piece = body_piece_length(body_length)
+    rows_body_piece = bodice_rows(length_body_piece, stitch_height)
+    widest_point = find_widest(body_widths)
+    spr = stitches_per_row(widest_point, stitch_width)
+    body_print = print_body_piece(rows_body_piece, spr, stitch)    
+    print_neckline_statement()
+    neck_rows = neckline_rows(stitch_height)
+    x_values = find_x(stitch_height, neck_rows)
+    widths = find_widths(x_values, widest_point)
+    spr_neck = find_stitches_per_row_neckline(widths, stitch_width)
+    decrease_neck = calculate_dec_neckline(spr_neck)
+    base_stitches = spr_neck[0]
+    neck_print = print_neckline(decrease_neck, base_stitches, stitch)
+
