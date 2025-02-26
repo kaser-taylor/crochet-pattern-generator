@@ -153,3 +153,11 @@ def processed_measurements(final_measurements, ease):
     for measurement in final_measurements:
         final_measurements[measurement] += ease
     return final_measurements
+
+def body_widths(measurements):
+    body_widths = {}
+    body_widths['m1'] = measurements['bust']
+    body_widths ['m2'] = measurements['shoulder width']
+    body_widths['m3'] = measurements['waist']
+    body_widths['m4'] = measurements['hip']
+    return body_widths
