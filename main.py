@@ -4,7 +4,7 @@ import stitch_swatch_data
 import sweater_pattern_data
 import print_rows
 import first_row
-
+import print_bodice
 
 def main():
     #gets user size
@@ -21,14 +21,14 @@ def main():
 
     #adjusts measurements to desired fit
     processed_measurements = measurements.processed_measurements(final_measurements, baggy_factor)
-    print(processed_measurements)
+   
 
     #gets swatch data from user and calculates data from that
     swatch_data = stitch_swatch_data.get_swatch_data()
-
+ 
     #sleeve_data
     sleeve_data = sweater_pattern_data.define_sleeve_variables(swatch_data, processed_measurements)
-    print(sleeve_data)
+
 
     #prints first row of sleeve
     first_row.print_first_row(processed_measurements['wrist'], swatch_data['stitch_type'], swatch_data['stitch_width'])
@@ -39,8 +39,8 @@ def main():
     print_sleeve_data = print_rows.row_tracker(sleeve_data['sleeve_rows'], sleeve_data['sleeve_total_num_increases'], sleeve_data['sleeve_rows_between_increase'], swatch_data['stitch_type'])
 
     #gets sleeve cap decreases
-    decreases = quadratics.put_it_all_together(processed_measurements['upper arm circ'], processed_measurements['arm hole depth'], swatch_data['stitch_height'], sleeve_data['sleeve_cap_rows'], swatch_data['stitch_width'])
-    print(decreases)
+    decreases = quadratics.put_it_all_together_vertical(processed_measurements['upper arm circ'], processed_measurements['arm hole depth'], swatch_data['stitch_height'], sleeve_data['sleeve_cap_rows'], swatch_data['stitch_width'])
+    
 
     #prints first row of sleeve cap
     sleeve_cap_first_row_data = first_row.print_first_row_new_section(print_sleeve_data['row_counter'], swatch_data['stitch_type'])
@@ -48,5 +48,23 @@ def main():
     #prints sleeve cap
     sleeve_cap = print_rows.print_sleeve_cap(print_sleeve_data, decreases, swatch_data['stitch_type'], sleeve_data['calculated_sleeve_stitches_at_top'])
     #test commit after making private
+    
+    #body widths to iterate through for body printer
+    body_widths = measurements.body_widths(processed_measurements)
+
+    #body printer
+    print_bodice.print_body(processed_measurements['body length'], swatch_data['stitch_height'], body_widths, swatch_data['stitch_width'], swatch_data['stitch_type'])
+
+    #gathers bodice data
+    # bodice_data = print_rows.comspile_bodice_section_datas(processed_measurements)
+    
+
+    #prints first bodice row
+    #first_row.print_first_bodice_ch(bodice_data)
+    
+    #prints bodice
+    # last_row_count = print_rows.print_all_sections(bodice_data, swatch_data)
+
+    #
 if __name__ == '__main__':
     main()

@@ -1,4 +1,7 @@
-    
+import math
+import quadratics
+import quadratics_experiment
+
 def print_regular_repeat(row_counter, rows_between, stitch):
     print(f'Row {row_counter} - {row_counter + rows_between} {stitch}')
 
@@ -102,10 +105,11 @@ def calculate_f_and_b_dec(decrease):
         total_stitches += 1
     
     return decrease_data
-        
-        
 
 
+# def print_row(row):
+
+#     print(f'Row: {row} ')
 
 #OLD CODE
 
