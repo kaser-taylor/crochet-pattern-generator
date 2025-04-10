@@ -59,30 +59,7 @@ Ensure you have Python installed on your system. You can download Python from th
    - The program follows standard crochet pattern conventions but may struggle with rows that repeat multiple times.
    - Updates may be made in the future, but the main goal of this project is to learn Python, so future maintenance is not guaranteed.
 
-## Example Workflow
 
-1. **Input Your Size**:
-   - Example: `M` (Medium)
-2. **Adjust Measurements (Optional)**:
-   - Example: Adjust bust to `40 inches`, sleeve length to `24 inches`.
-3. **Choose Fit**:
-   - Example: `Casual`
-4. **Crochet Swatch**:
-   - Example: A 4x4 swatch using `double crochet`.
-5. **Input Swatch Data**:
-   - Example: `Stitch height: 0.5 inches`, `Stitch width: 0.25 inches`.
-6. **Generate Pattern**:
-   - Output: The program generates the pattern based on your size, adjustments, and swatch data.
-
-## Files Included
-
-- `measurements.py`: Contains preset body measurements for different sizes and functions for adjusting these measurements.
-- `print_bodice.py`: Contains functions for calculating and printing the bodice measurements, including sleeve and neckline shaping.
-- `print_rows.py`: Handles row calculations, including increases, decreases, and repeats.
-- `quadratics_experiment.py` and `quadratics.py`: Used for calculating parabolic curves to shape the sweater.
-- `stitch_swatch_data.py`: Defines stitch types and calculations related to swatch dimensions.
-- `sweater_pattern_data.py`: Contains logic for defining sleeve and bodice variables based on swatch data and user measurements.
-- `test.py` and `testing.py`: Unit tests for validating the calculations and functionality of the program.
 
 ## Contributing
 
